@@ -1,0 +1,14 @@
+.header {
+  width: 100%;
+  border-bottom: 1px solid $graphite;
+  padding: 1em 2em;
+}
+.header__title {
+  font-size: 1.4em;
+  margin-right: 2em;
+}
+@media only screen and (min-width: 780px) {
+  .header__title {
+    display: inline-block;
+  }
+}
