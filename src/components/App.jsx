@@ -1,12 +1,17 @@
 import React from 'react';
+import Header from './Header';
 
 export default class App extends React.Component {
 
   constructor() {
     super();
     this.socket;
-    this.state = {};
+    this.state = {
+      socketStatus: 'Connecting...',
+      isConnected: null
+    };
     this.createWebSocket = this.createWebSocket.bind(this);
+    this.onOpen = this.onOpen.bind(this);
   }
 
   componentDidMount() {
@@ -23,7 +28,10 @@ export default class App extends React.Component {
   }
 
   onOpen(event) {
-    console.log('Connected to: ' + event.currentTarget.url);
+    this.setState({
+      socketStatus: `Connected to: ${event.currentTarget.url}`,
+      isConnected: true
+    });
   }
 
   onMessage(event) {
@@ -44,10 +52,8 @@ export default class App extends React.Component {
     return (
       <div className="app">
 
-        <div className="header">
-          <h1 className="header__title">Realtime Cryptocurrency Trade Ticker</h1>
-          <span id="js-status">Connecting...</span>
-        </div>
+        <Header status={ this.state.socketStatus } 
+          connected={ this.state.isConnected } />
 
       </div>
     );
