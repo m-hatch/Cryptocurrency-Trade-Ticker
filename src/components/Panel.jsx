@@ -40,7 +40,7 @@ export default (props) => {
 
           <tr className="table__heading">
             <th>Symbol</th>
-            <th>Buy/Sell</th>
+            <th>Trade</th>
             <th>Size</th>
             <th>Price</th>
             <th>Gross Value</th>
