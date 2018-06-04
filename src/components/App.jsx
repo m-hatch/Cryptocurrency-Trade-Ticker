@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from './Header';
 import Connection from './Connection';
+import Dashboard from './Dashboard';
 
 export default class App extends React.Component {
 
@@ -11,13 +12,15 @@ export default class App extends React.Component {
     // initialize state
     this.state = {
       socketStatus: 'Connecting...',
-      isConnected: null
+      isConnected: null,
+      message: null
     };
 
     // bind methods
     this.createWebSocket = this.createWebSocket.bind(this);
     this.onOpen = this.onOpen.bind(this);
     this.onClose = this.onClose.bind(this);
+    this.onMessage = this.onMessage.bind(this);
     this.handleClick = this.handleClick.bind(this);
   }
 
@@ -43,8 +46,16 @@ export default class App extends React.Component {
 
   onMessage(event) {
     const message = JSON.parse(event.data);
-    const data = message.data;
-    console.log(message.data);
+
+    if(message.data) {
+      this.setState({
+        message: message.data
+      });
+    }
+
+    if (!message.data) {
+      console.log(message);
+    }
   }
 
   onClose(event) {
@@ -76,6 +87,8 @@ export default class App extends React.Component {
           connected={ this.state.isConnected } />
 
         <Connection handleClick={ this.handleClick } />
+
+        <Dashboard message={ this.state.message } />
 
       </div>
     );

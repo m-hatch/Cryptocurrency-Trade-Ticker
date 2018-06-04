@@ -1,0 +1,26 @@
+.dashboard {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.panel {
+  flex-grow: 1;
+  width: 100%;
+  height: 400px;
+  border: 1px solid $graphite;
+  box-sizing: border-box;
+  padding: .5em 1.5em;
+  overflow: auto;
+}
+
+@media only screen and (min-width: 780px) {
+  .panel {
+    width: 50%;
+  }
+}
+
+@media only screen and (min-width: 1180px) {
+  .panel {
+    width: 33.3333%;
+  }
+}
