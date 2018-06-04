@@ -38,7 +38,6 @@ export default class Dashboard extends React.Component {
     // prevent re-render if props haven't changed
     if (previousProps.message !== this.props.message) {
       this.processMessage(this.props.message);
-      console.log(this.state)
     }
   }
 
