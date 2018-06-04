@@ -1,5 +1,6 @@
 import React from 'react';
 import { SYMBOLS } from '../util/constants';
+import Panel from './Panel';
 
 /*
  * @prop: message {array}
@@ -67,11 +68,12 @@ export default class Dashboard extends React.Component {
   }
 
   getPanels() {
-    return Object.keys(this.state).map(key => (
-      <div className="panel" key={ key }>
-        { this.state[key].name + ' ' + this.state[key].curr}
-      </div>
-    ));
+    return Object.keys(this.state).map(key => 
+      <Panel key={ key }
+        name={ this.state[key].name } 
+        currency={ this.state[key].curr }
+        trades={ this.state[key].trades } />
+    );
   }
 
   render() {
